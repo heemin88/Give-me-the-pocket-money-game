@@ -43,7 +43,7 @@ int newRank(int score, rank *ranklist){
 	temp.score = score;
 
 	for(i = 0 ;i<SIZE;i++){
-   		if(temp.score > ranklist[i].score){
+   		if(temp.score >=ranklist[i].score){
       			for(int j = SIZE-1; j>i;j--){
          			ranklist[j] = ranklist[j-1];
       			}
@@ -69,7 +69,7 @@ void get_rank(rank *ranklist){
 	}
 	for(i; i<SIZE; i++){
 		strcpy(ranklist[i].name,"\0");
-		ranklist[i].score = -1;
+		ranklist[i].score = 0;
 	}
 	fclose(fp);
 }

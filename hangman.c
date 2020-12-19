@@ -92,7 +92,7 @@ int main()
       clear();
     	refresh();
     	tty_mode(0);
-    	signal(SIGINT,SIG_DFL);
+    	signal(SIGINT,handler2);
 	set_cr_echo_mode();
 	newRank(money,ranklist);
 	tty_mode(1);
@@ -100,8 +100,6 @@ int main()
 	set_rank(ranklist);
 	
 	sleep(8);
-	//clear();
-	//refresh();
 	endwin();
 	exit(1);
 }
@@ -129,7 +127,7 @@ void gameStart(){
     	clear();
     	refresh();
     	tty_mode(0);
-    	signal(SIGINT,SIG_DFL);
+    	signal(SIGINT,handler2);
 	set_cr_echo_mode();
 	newRank(money,ranklist);
 	tty_mode(1);
@@ -357,26 +355,23 @@ void gameStart(){
 
 void handler(){
 
-    clear();
-
-    move(LINES-1,30);
+    move(20,26);
 
     addstr("Will you continue the game?(y/n)");
 
     refresh();
 
-    ans = getc(stdin);
+    scanf("%c",&ans);
 
-    move(LINES-1,30);
+    move(20,26);
 
     addstr("                                             ");
 
-    refresh();
     if(ans == 'n'){
     	clear();
     	refresh();
     	tty_mode(0);
-    	signal(SIGINT,SIG_DFL);
+    	signal(SIGINT,handler2);
 	set_cr_echo_mode();
 	newRank(money,ranklist);
 	tty_mode(1);
@@ -384,12 +379,12 @@ void handler(){
 	set_rank(ranklist);
 	
 	sleep(8);
-	//clear();
-	//refresh();
 	endwin();
 	exit(1);
-    }
-
+    }else if(ans =='y'){
+	move(15,39);
+	refresh();
+	}
 }
 
 int check_value(int v[],int line){
