@@ -14,16 +14,37 @@ typedef struct rank{
 }rank;
 
 
+int namecheck(rank *ranklist,char name[]){
+	int i;
+	for(i=0;i<SIZE;i++){
+		if(strcmp(ranklist[i].name, name)==0)
+			return 1;
+	}
+	return 0;
+}
 int newRank(int score, rank *ranklist){
 	rank temp;
 	int i;
 	move(0,5);
 	addstr("if you want to check your ranking, enter your nickname\n");
 	refresh();
-	move(1,5);
-	addstr("nickname : ");
-	getstr(temp.name);
-	refresh();
+	while(1){
+		
+		move(1,5);
+		addstr("nickname : ");
+		getstr(temp.name);
+		refresh();
+		move(2,5);
+		addstr("                                                               ");
+		if(namecheck(ranklist,temp.name)==0)
+			break;
+		else
+		{
+			move(2,5);
+			addstr("The same nickname already exists. Please re-enter.");
+			refresh();
+		}
+	}
 	temp.score = score;
 
 	for(i = 0 ;i<SIZE;i++){

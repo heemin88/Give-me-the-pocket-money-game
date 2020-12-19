@@ -15,6 +15,7 @@ typedef struct rank{
 	int score;
 }rank;
 
+int namecheck(rank *ranklist,char name[]);
 int newRank(int score, rank * ranklist);
 void initialrank(rank *ranklist);
 void printrank(rank * ranklist);
