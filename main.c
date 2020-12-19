@@ -5,6 +5,7 @@
 int main(void){
 	int a;
 	rank ranklist[SIZE];
+	get_rank(ranklist);
 	initscr();
 	clear();
 	a = printmain();
@@ -23,6 +24,8 @@ int main(void){
 	newRank(5,ranklist);
 	tty_mode(1);
 	printrank(ranklist);
+	set_rank(ranklist);
 	sleep(8);
+	endwin();
 	
 }
