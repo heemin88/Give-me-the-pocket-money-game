@@ -63,10 +63,10 @@ int valid(char* , const char* ,int ,int[]);
 int check_value(int[] ,int );
 
 void handler2(){
-	clear();
-	refresh();
-	endwin();
-	exit(1);
+    clear();
+    refresh();
+    endwin();
+    exit(1);
 }
 
 rank ranklist[SIZE];
@@ -74,34 +74,34 @@ int main()
 
 {
     int a;
-	get_rank(ranklist);
-	initscr();
-	clear();
-	a = printmain();
-	if (a==0)
-	{
-		clear();
-		addstr("end game..");
-		refresh();
-		sleep(2);
-		endwin();
-		return 0;
-	}	
-	
+    get_rank(ranklist);
+    initscr();
+    clear();
+    a = printmain();
+    if (a==0)
+    {
+        clear();
+        addstr("end game..");
+        refresh();
+        sleep(2);
+        endwin();
+        return 0;
+    }    
+    
       gameStart();
       clear();
-    	refresh();
-    	tty_mode(0);
-    	signal(SIGINT,handler2);
-	set_cr_echo_mode();
-	newRank(money,ranklist);
-	tty_mode(1);
-	printrank(ranklist);
-	set_rank(ranklist);
-	
-	sleep(8);
-	endwin();
-	exit(1);
+        refresh();
+        tty_mode(0);
+        signal(SIGINT,handler2);
+    set_cr_echo_mode();
+    newRank(money,ranklist);
+    tty_mode(1);
+    printrank(ranklist);
+    set_rank(ranklist);
+    
+    sleep(8);
+    endwin();
+    exit(1);
 }
 
  
@@ -124,21 +124,21 @@ void gameStart(){
         clear();
 
         if(ans =='n'){
-    	clear();
-    	refresh();
-    	tty_mode(0);
-    	signal(SIGINT,handler2);
-	set_cr_echo_mode();
-	newRank(money,ranklist);
-	tty_mode(1);
-	printrank(ranklist);
-	set_rank(ranklist);
-	
-	sleep(8);
-	//clear();
-	//refresh();
-	endwin();
-	exit(1);
+        clear();
+        refresh();
+        tty_mode(0);
+        signal(SIGINT,handler2);
+    set_cr_echo_mode();
+    newRank(money,ranklist);
+    tty_mode(1);
+    printrank(ranklist);
+    set_rank(ranklist);
+    
+    sleep(8);
+    //clear();
+    //refresh();
+    endwin();
+    exit(1);
         }
         
         line =0;
@@ -176,7 +176,7 @@ void gameStart(){
             addstr(N);
             sprintf(money1,"%d",money);
             sprintf(chance1,"%d",chance);
-            move(28,27);
+            move(28,23);
             addstr("total_money: ");
             addstr(money1);
             addstr("     ");
@@ -197,20 +197,20 @@ void gameStart(){
                 scanf("%c",input);
                 compare=valid(input,word[num],line,value);
                 if(compare==0){
-                	move(21,2);
-			addstr("   *   *   ");
-			move(23,2);
-			addstr(N);
-			move(23,2);
-			addstr("    * *");
-			move(24,2);
-			addstr(N);
-			move(24,2);
-			addstr("  *     *");
-			move(25,2);
-			addstr(N);
-			move(25,2);
-			addstr(" *       *");
+                    move(21,2);
+            addstr("   *   *   ");
+            move(23,2);
+            addstr(N);
+            move(23,2);
+            addstr("    * *");
+            move(24,2);
+            addstr(N);
+            move(24,2);
+            addstr("  *     *");
+            move(25,2);
+            addstr(N);
+            move(25,2);
+            addstr(" *       *");
 
                     move(7,31);
                     addstr("no...try again");
@@ -277,44 +277,44 @@ void gameStart(){
         }
         if(chance ==0){
         
-        	move(6,50);
-        	addstr(N);
-        	move(6,50);
-        	addstr("result: ");
-        	addstr(word[num]);
-        	int i=0;
-        	sprintf(i1,"%d",i);
-            	move(27,68);
-            	addstr("count: ");
-            	addstr(i1);
-            	addstr(N);
-        		
-        	chance=0;
-        	sprintf(money1,"%d",money);
-        	sprintf(chance1,"%d",chance);
-        	move(28,27);
-        	addstr("total_money: ");
-        	addstr(money1);
-        	addstr("     ");
-        	addstr("the money that you can get: ");
-        	addstr(chance1);
-        	addstr(N);
-        	refresh();
-        	sleep(3);
-        	
-        	
-        	clear();
-        	move(location_y,location_x);
-		addstr("         ");
-		move(location_y+1,location_x);
-		addstr("you are lose...");
-		move(location_y+2,location_x);
-		addstr("bye!");
-		refresh();
-		sleep(3);
-        	
+            move(6,50);
+            addstr(N);
+            move(6,50);
+            addstr("result: ");
+            addstr(word[num]);
+            int i=0;
+            sprintf(i1,"%d",i);
+                move(27,68);
+                addstr("count: ");
+                addstr(i1);
+                addstr(N);
+                
+            chance=0;
+            sprintf(money1,"%d",money);
+            sprintf(chance1,"%d",chance);
+            move(28,23);
+            addstr("total_money: ");
+            addstr(money1);
+            addstr("     ");
+            addstr("the money that you can get: ");
+            addstr(chance1);
+            addstr("       ");
+            refresh();
+            sleep(3);
+            
+            
+            clear();
+            move(location_y,location_x);
+        addstr("         ");
+        move(location_y+1,location_x);
+        addstr("you are lose...");
+        move(location_y+2,location_x);
+        addstr("bye!");
+        signal(SIGINT,SIG_IGN);
+        refresh();
+        sleep(3);
         
-        	endwin();
+            endwin();
                 break;
             }
 
@@ -322,7 +322,7 @@ void gameStart(){
         addstr(N);
         move(1,2);
         addstr("<done...>");
-	
+    
         money=money+chance;
         int i=0;
         sprintf(i1,"%d",i);
@@ -333,7 +333,7 @@ void gameStart(){
         chance=0;
         sprintf(money1,"%d",money);
         sprintf(chance1,"%d",chance);
-        move(28,27);
+        move(28,23);
         addstr("total_money: ");
         addstr(money1);
         addstr("     ");
@@ -368,37 +368,37 @@ void handler(){
     addstr("                                             ");
 
     if(ans == 'n'){
-    	clear();
-    	refresh();
-    	tty_mode(0);
-    	signal(SIGINT,handler2);
-	set_cr_echo_mode();
-	newRank(money,ranklist);
-	tty_mode(1);
-	printrank(ranklist);
-	set_rank(ranklist);
-	
-	sleep(8);
-	endwin();
-	exit(1);
+        clear();
+        refresh();
+        tty_mode(0);
+        signal(SIGINT,handler2);
+    set_cr_echo_mode();
+    newRank(money,ranklist);
+    tty_mode(1);
+    printrank(ranklist);
+    set_rank(ranklist);
+    
+    sleep(8);
+    endwin();
+    exit(1);
     }else if(ans =='y'){
-	move(15,39);
-	refresh();
-	}
+    move(15,39);
+    refresh();
+    }
 }
 
 int check_value(int v[],int line){
-	int i=0;
-	for(i;i<line;i++){
-		if(v[i]==0) break; 
-	}
-	if(i==line)  return 0;
-	else return 1;
+    int i=0;
+    for(i;i<line;i++){
+        if(v[i]==0) break;
+    }
+    if(i==line)  return 0;
+    else return 1;
 }
 
 int valid(char* input,const char* answer,int line,int v[]){
-	int k=0;
-	 for(int i=0;i<line;i++){
+    int k=0;
+     for(int i=0;i<line;i++){
         if((v[i]==0)&&(input[0]==answer[i])){
         move(location_y-1,location_x+(i*2));
         addstr(input);
@@ -410,7 +410,6 @@ int valid(char* input,const char* answer,int line,int v[]){
         v[i]=1;
         }
     }
-	if(k==1)	return 1;
-	return 0;
+    if(k==1)    return 1;
+    return 0;
 }
-
