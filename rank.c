@@ -8,22 +8,38 @@
 
 #define SIZE 30
 
-typedef struct rank{
-	char name[10];
-	int score;
-}rank;
 
-
+int namecheck(rank *ranklist,char name[]){
+	int i;
+	for(i=0;i<SIZE;i++){
+		if(strcmp(ranklist[i].name, name)==0)
+			return 1;
+	}
+	return 0;
+}
 int newRank(int score, rank *ranklist){
 	rank temp;
 	int i;
 	move(0,5);
 	addstr("if you want to check your ranking, enter your nickname\n");
 	refresh();
-	move(1,5);
-	addstr("nickname : ");
-	getstr(temp.name);
-	refresh();
+	while(1){
+		
+		move(1,5);
+		addstr("nickname : ");
+		getstr(temp.name);
+		refresh();
+		move(2,5);
+		addstr("                                                               ");
+		if(namecheck(ranklist,temp.name)==0)
+			break;
+		else
+		{
+			move(2,5);
+			addstr("The same nickname already exists. Please re-enter.");
+			refresh();
+		}
+	}
 	temp.score = score;
 
 	for(i = 0 ;i<SIZE;i++){
@@ -39,11 +55,29 @@ int newRank(int score, rank *ranklist){
    		addstr("your score is out of rankings :(\n try again!");
 
 }
-void initialrank(rank *ranklist){
-   for(int i=0;i<SIZE;i++){
-      strcpy(ranklist[i].name ,"\0");
-      ranklist[i].score = 0;
-   }
+void get_rank(rank *ranklist){
+	int i = 0;
+	FILE * fp = fopen("ranklist.txt","r");
+	while(1){
+		if(feof(fp))
+			break;
+		fscanf(fp,"%s %d\n", ranklist[i].name, &ranklist[i].score);
+		i++;	
+	}
+	for(i; i<SIZE; i++){
+		strcpy(ranklist[i].name,"\0");
+		ranklist[i].score = 0;
+	}
+	fclose(fp);
+}
+void set_rank(rank *ranklist){
+	FILE *fp = fopen("ranklist.txt","w");
+	for(int i = 0; i<SIZE ; i++){
+		if(!strcmp(ranklist[i].name,"\0"))
+			break;
+		fprintf(fp, "%s %d\n", ranklist[i].name, ranklist[i].score);
+	}
+	fclose(fp);
 }
 void printrank(rank * ranklist){
    int i = 0;

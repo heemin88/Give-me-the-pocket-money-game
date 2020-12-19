@@ -1,0 +1,8 @@
+aaaa 100
+bbbb 90
+cccc 80
+dddd 70
+hhhh 60
+hh 50
+hi 5
+s 5
