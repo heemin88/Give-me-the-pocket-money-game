@@ -1,6 +1,9 @@
 #include <curses.h>
 #include <unistd.h>
+#include "rank.h"
 #include "mainScreen.h"
+
+#define SIZE 30
 
 int main(void){
 	int a;

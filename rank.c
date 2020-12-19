@@ -8,11 +8,6 @@
 
 #define SIZE 30
 
-typedef struct rank{
-	char name[10];
-	int score;
-}rank;
-
 
 int namecheck(rank *ranklist,char name[]){
 	int i;
