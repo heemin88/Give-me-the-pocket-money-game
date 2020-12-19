@@ -51,8 +51,11 @@ int newRank(int score, rank *ranklist){
       			break;
    		}
 	}
-	if(i==SIZE)
+	if(i==SIZE){
+		move(2,5);
    		addstr("your score is out of rankings :(\n try again!");
+   		refresh();
+   	}
 
 }
 void get_rank(rank *ranklist){
@@ -66,7 +69,7 @@ void get_rank(rank *ranklist){
 	}
 	for(i; i<SIZE; i++){
 		strcpy(ranklist[i].name,"\0");
-		ranklist[i].score = 0;
+		ranklist[i].score = -1;
 	}
 	fclose(fp);
 }

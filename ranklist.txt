@@ -1,3 +1,7 @@
+every 4300
+he 900
+ha 900
+dahyun 700
 aaaa 100
 bbbb 90
 cccc 80
@@ -6,3 +10,13 @@ hhhh 60
 hh 50
 hi 5
 s 5
+NASKL;FK 5
+] 5
+heemin 5
+suna 5
+m 0
+da 0
+dd 0
+pp 0
+ii 0
+sss 0
