@@ -60,11 +60,29 @@ int newRank(int score, rank *ranklist){
    		addstr("your score is out of rankings :(\n try again!");
 
 }
-void initialrank(rank *ranklist){
-   for(int i=0;i<SIZE;i++){
-      strcpy(ranklist[i].name ,"\0");
-      ranklist[i].score = 0;
-   }
+void get_rank(rank *ranklist){
+	int i = 0;
+	FILE * fp = fopen("ranklist.txt","r");
+	while(1){
+		if(feof(fp))
+			break;
+		fscanf(fp,"%s %d\n", ranklist[i].name, &ranklist[i].score);
+		i++;	
+	}
+	for(i; i<SIZE; i++){
+		strcpy(ranklist[i].name,"\0");
+		ranklist[i].score = 0;
+	}
+	fclose(fp);
+}
+void set_rank(rank *ranklist){
+	FILE *fp = fopen("ranklist.txt","w");
+	for(int i = 0; i<SIZE ; i++){
+		if(!strcmp(ranklist[i].name,"\0"))
+			break;
+		fprintf(fp, "%s %d\n", ranklist[i].name, ranklist[i].score);
+	}
+	fclose(fp);
 }
 void printrank(rank * ranklist){
    int i = 0;
